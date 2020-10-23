@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Microsoft.Graph;
+
 using System;
 using System.IO;
 using System.Linq.Expressions;
@@ -29,7 +31,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.Graph;
+
 using Windows.ApplicationModel.Core;
 using Windows.Security.Authentication.Web.Core;
 using Windows.Security.Credentials;
@@ -86,7 +88,7 @@ namespace Contoso.App.ViewModels
         public string Title
         {
             get => _title;
-            set => Set(ref _title, value); 
+            set => Set(ref _title, value);
         }
 
         private string _domain;
@@ -133,7 +135,7 @@ namespace Contoso.App.ViewModels
             set => Set(ref _showWelcome, value);
         }
 
-        private bool _showLoading; 
+        private bool _showLoading;
 
         /// <summary>
         /// Gets or sets whether to show the logging in progress UI.
@@ -152,10 +154,10 @@ namespace Contoso.App.ViewModels
         public bool ShowData
         {
             get => _showData;
-            set => Set(ref _showData, value); 
+            set => Set(ref _showData, value);
         }
 
-        private bool _showError; 
+        private bool _showError;
 
         /// <summary>
         /// Gets or sets whether to show the error UI.
@@ -218,7 +220,7 @@ namespace Contoso.App.ViewModels
         private async Task<string> GetTokenAsync()
         {
             var provider = await GetAadProviderAsync();
-            var request = new WebTokenRequest(provider, "User.Read", 
+            var request = new WebTokenRequest(provider, "User.Read",
                 Repository.Constants.AccountClientId);
             request.Properties.Add("resource", "https://graph.microsoft.com");
             var result = await WebAuthenticationCoreManager.GetTokenSilentlyAsync(request);

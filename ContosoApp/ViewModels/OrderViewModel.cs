@@ -22,6 +22,10 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Contoso.Models;
+
+using Microsoft.Toolkit.Uwp.Helpers;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,8 +33,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Contoso.Models;
-using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace Contoso.App.ViewModels
 {
@@ -87,7 +89,7 @@ namespace Contoso.App.ViewModels
         /// Returns the order with the specified ID.
         /// </summary>
         private static async Task<Order> GetOrder(Guid orderId) =>
-            await App.Repository.Orders.GetAsync(orderId); 
+            await App.Repository.Orders.GetAsync(orderId);
 
         /// <summary>
         /// Gets a value that specifies whether the user can refresh the page.
@@ -104,7 +106,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public Guid Id
         {
-            get => Model.Id; 
+            get => Model.Id;
             set
             {
                 if (Model.Id != value)
@@ -123,7 +125,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public bool IsModified
         {
-            get => _IsModified; 
+            get => _IsModified;
             set
             {
                 if (value != _IsModified)
@@ -156,7 +158,7 @@ namespace Contoso.App.ViewModels
         /// <summary>
         /// Gets a value that indicates whether this is a newly-created order.
         /// </summary>
-        public bool IsNewOrder => Model.InvoiceNumber == 0; 
+        public bool IsNewOrder => Model.InvoiceNumber == 0;
 
         /// <summary>
         /// Gets or sets the invoice number for this order. 
@@ -210,13 +212,13 @@ namespace Contoso.App.ViewModels
         }
 
         private ObservableCollection<LineItem> _lineItems;
-        
+
         /// <summary>
         /// Gets the line items in this invoice. 
         /// </summary>
         public ObservableCollection<LineItem> LineItems
         {
-            get => _lineItems; 
+            get => _lineItems;
             set
             {
                 if (_lineItems != value)
@@ -261,7 +263,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public LineItemViewModel NewLineItem
         {
-            get => _newLineItem; 
+            get => _newLineItem;
             set
             {
                 if (value != _newLineItem)
@@ -358,7 +360,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public string Address
         {
-            get => Model.Address; 
+            get => Model.Address;
             set
             {
                 if (Model.Address != value)
@@ -434,7 +436,7 @@ namespace Contoso.App.ViewModels
         /// <summary>
         /// Sets the Status property by parsing a string representation of the enum value.
         /// </summary>
-        public OrderStatus SetOrderStatus(object value) => OrderStatus = value == null ? 
+        public OrderStatus SetOrderStatus(object value) => OrderStatus = value == null ?
             OrderStatus.Open : (OrderStatus)Enum.Parse(typeof(OrderStatus), value as string);
 
         /// <summary>

@@ -22,10 +22,11 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Microsoft.Toolkit.Uwp.Helpers;
+
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace Contoso.App.ViewModels
 {
@@ -63,7 +64,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public bool IsLoading
         {
-            get => _isLoading; 
+            get => _isLoading;
             set => Set(ref _isLoading, value);
         }
 

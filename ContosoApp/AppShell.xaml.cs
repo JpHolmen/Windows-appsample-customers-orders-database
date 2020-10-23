@@ -22,10 +22,11 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using System;
 using Contoso.App.Views;
+
+using System;
+
 using Windows.System;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;

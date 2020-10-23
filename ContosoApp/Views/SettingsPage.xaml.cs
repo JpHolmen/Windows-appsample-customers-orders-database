@@ -23,7 +23,9 @@
 //  ---------------------------------------------------------------------------------
 
 using Contoso.Repository.Sql;
+
 using System;
+
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -33,7 +35,7 @@ namespace Contoso.App.Views
 {
     public sealed partial class SettingsPage : Page
     {
-        public const string DataSourceKey = "data_source"; 
+        public const string DataSourceKey = "data_source";
 
         /// <summary>
         /// Initializes a new instance of the SettingsPage class.
@@ -48,7 +50,7 @@ namespace Contoso.App.Views
             }
             else
             {
-                RestRadio.IsChecked = true; 
+                RestRadio.IsChecked = true;
             }
         }
 
@@ -57,14 +59,14 @@ namespace Contoso.App.Views
         /// </summary>
         private void OnDataSourceChanged(object sender, RoutedEventArgs e)
         {
-            var radio = (RadioButton)sender; 
+            var radio = (RadioButton)sender;
             switch (radio.Tag)
             {
                 case "Sqlite": App.UseSqlite(); break;
                 case "Rest": App.UseRest(); break;
-                default: throw new NotImplementedException(); 
+                default: throw new NotImplementedException();
             }
-            ApplicationData.Current.LocalSettings.Values[DataSourceKey] = radio.Tag; 
+            ApplicationData.Current.LocalSettings.Values[DataSourceKey] = radio.Tag;
         }
 
         /// <summary>

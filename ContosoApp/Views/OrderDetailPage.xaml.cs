@@ -22,12 +22,14 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using Contoso.Models;
 using Contoso.App.ViewModels;
+using Contoso.Models;
+
 using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+
 using Windows.ApplicationModel.Email;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -100,7 +102,7 @@ namespace Contoso.App.Views
                 var saveDialog = new SaveChangesDialog()
                 {
                     Title = $"Save changes to Invoice # {ViewModel.InvoiceNumber.ToString()}?",
-                    Message = $"Invoice # {ViewModel.InvoiceNumber.ToString()} " + 
+                    Message = $"Invoice # {ViewModel.InvoiceNumber.ToString()} " +
                         "has unsaved changes that will be lost. Do you want to save your changes?"
                 };
 
@@ -126,7 +128,7 @@ namespace Contoso.App.Views
                         e.Cancel = true;
 
                         // This flag gets cleared on navigation, so restore it. 
-                        ViewModel.IsModified = true; 
+                        ViewModel.IsModified = true;
                         break;
                 }
             }
@@ -173,7 +175,7 @@ namespace Contoso.App.Views
         /// <summary>
         /// Reloads the order.
         /// </summary>
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e) => 
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e) =>
             ViewModel = await OrderViewModel.CreateFromGuid(ViewModel.Id);
 
         /// <summary>
@@ -184,7 +186,7 @@ namespace Contoso.App.Views
             var saveDialog = new SaveChangesDialog()
             {
                 Title = $"Save changes to Invoice # {ViewModel.InvoiceNumber.ToString()}?",
-                Message = $"Invoice # {ViewModel.InvoiceNumber.ToString()} " + 
+                Message = $"Invoice # {ViewModel.InvoiceNumber.ToString()} " +
                     "has unsaved changes that will be lost. Do you want to save your changes?"
             };
             await saveDialog.ShowAsync();
@@ -201,7 +203,7 @@ namespace Contoso.App.Views
                     break;
                 case SaveChangesDialogResult.Cancel:
                     break;
-            }         
+            }
         }
 
         /// <summary>
@@ -210,7 +212,7 @@ namespace Contoso.App.Views
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 await ViewModel.SaveOrderAsync();
             }
             catch (OrderSavingException ex)
@@ -218,8 +220,8 @@ namespace Contoso.App.Views
                 var dialog = new ContentDialog()
                 {
                     Title = "Unable to save",
-                    Content = $"There was an error saving your order:\n{ex.Message}", 
-                    PrimaryButtonText = "OK"                 
+                    Content = $"There was an error saving your order:\n{ex.Message}",
+                    PrimaryButtonText = "OK"
                 };
 
                 await dialog.ShowAsync();
@@ -229,7 +231,7 @@ namespace Contoso.App.Views
         /// <summary>
         /// Queries for products.
         /// </summary>
-        private void ProductSearchBox_TextChanged(AutoSuggestBox sender, 
+        private void ProductSearchBox_TextChanged(AutoSuggestBox sender,
             AutoSuggestBoxTextChangedEventArgs args)
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
@@ -241,7 +243,7 @@ namespace Contoso.App.Views
         /// <summary>
         /// Notifies the page that a new item was chosen.
         /// </summary>
-        private void ProductSearchBox_SuggestionChosen(AutoSuggestBox sender, 
+        private void ProductSearchBox_SuggestionChosen(AutoSuggestBox sender,
             AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             if (args.SelectedItem != null)

@@ -22,10 +22,13 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using System;
-using Contoso.Models;
 using Contoso.App.ViewModels;
+using Contoso.Models;
+
 using Microsoft.Toolkit.Uwp.UI.Controls;
+
+using System;
+
 using Windows.ApplicationModel.Email;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -67,7 +70,7 @@ namespace Contoso.App.Views
         /// <summary>
         /// Opens the order in the order details page for editing. 
         /// </summary>
-        private void EditButton_Click(object sender, RoutedEventArgs e) => 
+        private void EditButton_Click(object sender, RoutedEventArgs e) =>
             Frame.Navigate(typeof(OrderDetailPage), ViewModel.SelectedOrder.Id);
 
         /// <summary>
@@ -76,16 +79,16 @@ namespace Contoso.App.Views
         private async void DeleteOrder_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 var deleteOrder = ViewModel.SelectedOrder;
                 await ViewModel.DeleteOrder(deleteOrder);
             }
-            catch(OrderDeletionException ex)
+            catch (OrderDeletionException ex)
             {
                 var dialog = new ContentDialog()
                 {
                     Title = "Unable to delete order",
-                    Content = $"There was an error when we tried to delete " + 
+                    Content = $"There was an error when we tried to delete " +
                         $"invoice #{ViewModel.SelectedOrder.InvoiceNumber}:\n{ex.Message}",
                     PrimaryButtonText = "OK"
                 };
@@ -149,14 +152,14 @@ namespace Contoso.App.Views
         /// <summary>
         /// Searchs the list of orders.
         /// </summary>
-        private void OrderSearch_QuerySubmitted(AutoSuggestBox sender, 
-            AutoSuggestBoxQuerySubmittedEventArgs args) => 
+        private void OrderSearch_QuerySubmitted(AutoSuggestBox sender,
+            AutoSuggestBoxQuerySubmittedEventArgs args) =>
                 ViewModel.QueryOrders(args.QueryText);
 
         /// <summary>
         /// Updates the suggestions for the AutoSuggestBox as the user types. 
         /// </summary>
-        private void OrderSearch_TextChanged(AutoSuggestBox sender, 
+        private void OrderSearch_TextChanged(AutoSuggestBox sender,
             AutoSuggestBoxTextChangedEventArgs args)
         {
             // We only want to get results when it was a user typing, 
@@ -172,7 +175,7 @@ namespace Contoso.App.Views
         /// Navigates to the order detail page when the user
         /// double-clicks an order. 
         /// </summary>
-        private void DataGrid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e) => 
+        private void DataGrid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e) =>
             Frame.Navigate(typeof(OrderDetailPage), ViewModel.SelectedOrder.Id);
 
         // Navigates to the details page for the selected customer when the user presses SPACE.

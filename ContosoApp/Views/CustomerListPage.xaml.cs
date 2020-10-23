@@ -22,11 +22,14 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Contoso.App.ViewModels;
+
 using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.UI.Controls;
+
+using System;
+using System.Linq;
+
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -59,7 +62,7 @@ namespace Contoso.App.Views
         /// </summary>
         private void CurrentWindow_SizeChanged(object sender, WindowSizeChangedEventArgs e)
         {
-            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile" && 
+            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile" &&
                 e.Size.Width >= (double)App.Current.Resources["MediumWindowSnapPoint"])
             {
                 mainCommandBar.DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
@@ -116,7 +119,7 @@ namespace Contoso.App.Views
                             customer.FirstName.StartsWith(parameter, StringComparison.OrdinalIgnoreCase) ||
                             customer.LastName.StartsWith(parameter, StringComparison.OrdinalIgnoreCase) ||
                             customer.Company.StartsWith(parameter, StringComparison.OrdinalIgnoreCase)))
-                        .Select(customer => $"{customer.FirstName} {customer.LastName}"); 
+                        .Select(customer => $"{customer.FirstName} {customer.LastName}");
                 }
             }
         }
@@ -129,7 +132,7 @@ namespace Contoso.App.Views
         {
             if (String.IsNullOrEmpty(args.QueryText))
             {
-                await DispatcherHelper.ExecuteOnUIThreadAsync(async () => 
+                await DispatcherHelper.ExecuteOnUIThreadAsync(async () =>
                     await ViewModel.GetCustomerListAsync());
             }
             else
@@ -148,14 +151,14 @@ namespace Contoso.App.Views
                         customer.FirstName.StartsWith(parameter, StringComparison.OrdinalIgnoreCase) ||
                         customer.LastName.StartsWith(parameter, StringComparison.OrdinalIgnoreCase) ||
                         customer.Company.StartsWith(parameter, StringComparison.OrdinalIgnoreCase)))
-                    .ToList(); 
+                    .ToList();
 
                 await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
                 {
-                    ViewModel.Customers.Clear(); 
+                    ViewModel.Customers.Clear();
                     foreach (var match in matches)
                     {
-                        ViewModel.Customers.Add(match); 
+                        ViewModel.Customers.Add(match);
                     }
                 });
             }

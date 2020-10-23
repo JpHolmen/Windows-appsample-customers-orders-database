@@ -22,12 +22,14 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Contoso.Models;
+
+using Microsoft.Toolkit.Uwp.Helpers;
+
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Contoso.Models;
-using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace Contoso.App.ViewModels
 {

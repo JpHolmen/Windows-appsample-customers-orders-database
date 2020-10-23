@@ -32,7 +32,7 @@ namespace Contoso.App.ViewModels
     /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.
     /// </summary>
     public abstract class BindableBase : INotifyPropertyChanged
-    {        
+    {
         /// <summary> 
         /// Occurs when a property value changes.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Contoso.App.ViewModels
         /// <param name="propertyName">Name of the property used to notify listeners. This
         /// value is optional and can be provided automatically when invoked from compilers
         /// that support <see cref="CallerMemberNameAttribute"/>.</param>
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) => 
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         /// <summary>

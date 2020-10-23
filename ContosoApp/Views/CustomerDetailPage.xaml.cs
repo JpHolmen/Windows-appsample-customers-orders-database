@@ -22,15 +22,18 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Contoso.App.ViewModels;
+using Contoso.Models;
+
+using Microsoft.Toolkit.Uwp.UI.Controls;
+
 using System;
 using System.Linq;
-using Contoso.Models;
-using Contoso.App.ViewModels;
+
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.Toolkit.Uwp.UI.Controls;
 
 namespace Contoso.App.Views
 {

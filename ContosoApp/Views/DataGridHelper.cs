@@ -22,11 +22,12 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Microsoft.Toolkit.Uwp.UI.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Microsoft.Toolkit.Uwp.UI.Controls;
 
 namespace Contoso.App.Views
 {

@@ -22,13 +22,16 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
-using Contoso.App.Views;
 using Contoso.App.ViewModels;
+using Contoso.App.Views;
 using Contoso.Repository;
 using Contoso.Repository.Rest;
 using Contoso.Repository.Sql;
+
 using Microsoft.EntityFrameworkCore;
+
 using System.IO;
+
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Globalization;
@@ -71,7 +74,7 @@ namespace Contoso.App
                 switch (dataSource.ToString())
                 {
                     case "Rest": UseRest(); break;
-                    default: UseSqlite(); break; 
+                    default: UseSqlite(); break;
                 }
             }
             else
@@ -117,6 +120,6 @@ namespace Contoso.App
         /// You can also deploy your own copy of the REST service locally or to Azure. See the README for details.
         /// </summary>
         public static void UseRest() =>
-            Repository = new RestContosoRepository("https://customers-orders-api-prod.azurewebsites.net/api/"); 
+            Repository = new RestContosoRepository("https://customers-orders-api-prod.azurewebsites.net/api/");
     }
 }

@@ -22,13 +22,15 @@
 //  THE SOFTWARE.
 //  ---------------------------------------------------------------------------------
 
+using Contoso.Models;
+
+using Microsoft.Toolkit.Uwp.Helpers;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Contoso.Models;
-using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace Contoso.App.ViewModels
 {
@@ -61,7 +63,7 @@ namespace Contoso.App.ViewModels
         public bool IsLoading
         {
             get => _isLoading;
-            set => Set(ref _isLoading, value); 
+            set => Set(ref _isLoading, value);
         }
 
         private Order _selectedOrder;
@@ -99,7 +101,7 @@ namespace Contoso.App.ViewModels
         /// </summary>
         public Customer SelectedCustomer
         {
-            get => _selectedCustomer; 
+            get => _selectedCustomer;
             set => Set(ref _selectedCustomer, value);
         }
 

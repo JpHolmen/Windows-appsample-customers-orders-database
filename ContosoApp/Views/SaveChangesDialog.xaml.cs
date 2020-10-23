@@ -49,8 +49,8 @@ namespace Contoso.App.Views
         /// <summary>
         /// Gets or sets the display message.
         /// </summary>
-        public string Message { get; set; } = "You have unsaved changes that will be lost. " + 
-            "Would you like to save your changes?"; 
+        public string Message { get; set; } = "You have unsaved changes that will be lost. " +
+            "Would you like to save your changes?";
 
         /// <summary>
         /// Fired when the user chooses to save. 
